@@ -2,7 +2,6 @@ package RomanoPietro.CapstoneProject.entities.Health;
 
 
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
@@ -20,7 +19,7 @@ public record NewHealthDTO(
         @NotNull(message = "L'etá è obbligatoria")
         long eta,
 
-        @NotEmpty(message = "La data è obbligatoria")
+        @NotNull(message = "La data è obbligatoria")
         LocalDate data_salvataggio,
 
         @NotNull(message = "L'ID utente è obbligatorio")
