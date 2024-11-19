@@ -39,22 +39,38 @@ public class UserService {
     }
 
     public User save(NewUserDTO body) {
+        // Controllo se l'email è già in uso
         this.userRepository.findByEmail(body.email()).ifPresent(
                 user -> {
                     throw new BadRequestException("Email " + body.email() + " già in uso!");
                 }
         );
+
+        // Controllo se l'username è già in uso
         this.userRepository.findByUsername(body.username()).ifPresent(
                 user -> {
                     throw new BadRequestException("Username " + body.username() + " è già in uso!");
                 }
         );
-        User newUtente = new User(body.username(), body.nome(), body.cognome(), body.email(), bcrypt.encode(body.password()));
+
+        String avatarUrl = generateAvatarUrl(body.name(), body.surname());
+        User newUtente = new User(
+                body.username(),
+                body.name(),
+                body.surname(),
+                body.email(),
+                bcrypt.encode(body.password()),
+                avatarUrl);
         return this.userRepository.save(newUtente);
     }
 
     public User save(User utente) {
         return this.userRepository.save(utente);
+    }
+
+    // Metodo per generare l'avatar URL
+    private String generateAvatarUrl(String nome, String cognome) {
+        return "https://ui-avatars.com/api/?name=" + nome + "+" + cognome;
     }
 
     public User findByIdAndUpdate(long id, NewUserDTO body) {
@@ -68,8 +84,8 @@ public class UserService {
             );
         }
         found.setUsername(body.username());
-        found.setName(body.nome());
-        found.setSurname(body.cognome());
+        found.setName(body.name());
+        found.setSurname(body.surname());
         found.setEmail(body.email());
 
         return this.userRepository.save(found);

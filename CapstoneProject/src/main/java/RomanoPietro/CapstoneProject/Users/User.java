@@ -28,16 +28,16 @@ public class User implements UserDetails {
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
-    private String AvatarURL;
+    private String avatarURL;
 
-    public User(String username, String name, String surname, String email, String password) {
+    public User(String username, String name, String surname, String email, String password, String avatarURL) {
         this.username = username;
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.password = password;
         this.role = Role.USER;
-        AvatarURL = "avartarURL";
+        this.avatarURL = avatarURL;
     }
 
     @Override
