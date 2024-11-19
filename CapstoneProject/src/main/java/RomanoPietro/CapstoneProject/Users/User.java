@@ -19,7 +19,7 @@ import java.util.List;
 @JsonIgnoreProperties({"password", "role", "accountNonLocked", "accountNonExpired", "credentialsNonExpired", "enabled", "authorities"})
 public class User implements UserDetails {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
     private long id;
     private String username;
