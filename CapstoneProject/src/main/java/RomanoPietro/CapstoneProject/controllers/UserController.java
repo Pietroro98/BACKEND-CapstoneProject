@@ -25,9 +25,8 @@ public class UserController {
     UserService userService;
 
 
-    //questo dovrebbe essere visto solamente dall'admin
     @GetMapping
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public List<User> findAll() {
         return this.userService.findAll();
     }
@@ -67,8 +66,7 @@ public class UserController {
     }
 
     // il resto dei metodi----------------------------------------------------------------
-    //questi sono tutti metodi da parte del admin
-    //questi in realtà non servono, ma li ho messi per testare
+
     @GetMapping("/{id}")
     public User findById(@PathVariable long id) {
         return this.userService.findById(id);
