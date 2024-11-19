@@ -40,7 +40,7 @@ public class JWTCheckerFilter extends OncePerRequestFilter {
 
         //autorizzazione
         String userId = jwt.getIdFromToken(accessToken);
-        Long userIdLong = Long.parseLong(userId); // Convert String to Long
+        Long userIdLong = Long.parseLong(userId);
         User currentUser = this.utenteService.findById(userIdLong);
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(currentUser, null, currentUser.getAuthorities());
