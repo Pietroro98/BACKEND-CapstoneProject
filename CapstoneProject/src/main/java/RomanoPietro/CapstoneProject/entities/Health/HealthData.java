@@ -19,20 +19,49 @@ public class HealthData {
     @Setter(AccessLevel.NONE)
     private long id;
 
-    private long peso;
-    private long altezza;
-    private long eta;
+    private double peso;
+    private double altezza;
+    private int eta;
+    private String genere; // "M" per maschio e "F" per femmina
     private LocalDate data_salvataggio;
+
 
     @OneToOne
     @JoinColumn( name = "user_id")
     private User user;
 
-    public HealthData(long peso, long altezza, long eta, LocalDate data_salvataggio) {
+    public HealthData(double peso, double altezza, int eta, String genere, LocalDate data_salvataggio) {
         this.peso = peso;
         this.altezza = altezza;
         this.eta = eta;
+        this.genere = genere;
         this.data_salvataggio = data_salvataggio;
+    }
 
+
+
+    // Calcolo BMI
+    public double calculateBMI() {
+        return peso / (altezza * altezza);
+    }
+
+    // Calcolo percentuale massa grassa
+    public double calculateFatPercentage() {
+        double bmi = calculateBMI();
+        double fatPercentage = 0.0;
+
+        if ("M".equals(genere)) {
+            fatPercentage = 1.20 * bmi + 0.23 * eta - 16.2;
+        } else if ("F".equals(genere)) {
+            fatPercentage = 1.20 * bmi + 0.23 * eta - 5.4;
+        }
+
+        return fatPercentage;
+    }
+
+    // Calcolo percentuale massa magra
+    public double calculateLeanBodyMass() {
+        double fatPercentage = calculateFatPercentage();
+        return (100 - fatPercentage) * peso / 100;
     }
 }

@@ -51,6 +51,7 @@ public class HealthService {
                     body.peso(),
                     body.altezza(),
                     body.eta(),
+                    body.genere(),
                     body.data_salvataggio());
             newHealth.setUser(newUser);
 

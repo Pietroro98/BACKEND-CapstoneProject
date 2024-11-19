@@ -2,6 +2,7 @@ package RomanoPietro.CapstoneProject.entities.Health;
 
 
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
@@ -9,15 +10,18 @@ import java.time.LocalDate;
 public record NewHealthDTO(
         @Min(0)
         @NotNull(message = "Il peso è obbligatorio")
-        long peso,
+        double peso,
 
         @Min(0)
         @NotNull(message = "L'altezza è obbligatoria")
-        long altezza,
+        double altezza,
 
         @Min(0)
         @NotNull(message = "L'etá è obbligatoria")
-        long eta,
+        int eta,
+
+        @NotEmpty(message = "Il genere é obbligatorio")
+        String genere,
 
         @NotNull(message = "La data è obbligatoria")
         LocalDate data_salvataggio,
