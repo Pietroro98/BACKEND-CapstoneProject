@@ -24,7 +24,7 @@ public class ExerciseController {
     public Page<Exercise> findAll(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
-            @RequestParam(defaultValue = "nome") String sortBy) {
+            @RequestParam(defaultValue = "name") String sortBy) {
         return exerciseService.findAll(page, size, sortBy);
     }
 

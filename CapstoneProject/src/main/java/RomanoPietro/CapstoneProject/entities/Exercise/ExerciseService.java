@@ -33,7 +33,6 @@ public class ExerciseService {
     public Exercise save(NewExerciseDTO body) {
         try {
             Exercise newExercise = new Exercise(
-                    body.name(),
                     body.equipment(),
                     body.target(),
                     body.secondaryMuscles(),

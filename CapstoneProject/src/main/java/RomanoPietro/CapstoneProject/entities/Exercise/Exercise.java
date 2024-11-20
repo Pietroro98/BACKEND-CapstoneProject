@@ -28,8 +28,7 @@ public class Exercise {
     private String instructions;
     private String gifURL;
 
-    public Exercise(BodyParts bodyParts, String name, String equipment, String target, String secondaryMuscles, String instructions) {
-        this.bodyParts = bodyParts;
+    public Exercise(String name, String equipment, String target, String secondaryMuscles, String instructions) {
         this.name = name;
         this.equipment = equipment;
         this.target = target;
