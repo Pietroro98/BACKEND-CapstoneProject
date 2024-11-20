@@ -1,4 +1,4 @@
-package RomanoPietro.CapstoneProject.entities.WorkouPlan;
+package RomanoPietro.CapstoneProject.entities.WorkoutPlan;
 
 import RomanoPietro.CapstoneProject.Users.User;
 import RomanoPietro.CapstoneProject.entities.ExerciseWorkout.ExerciseWorkout;
@@ -34,10 +34,9 @@ public class WorkoutPlan {
     @ToString.Exclude
     private List<ExerciseWorkout> exerciseWorkouts;
 
-    public WorkoutPlan(String nome_scheda, LocalDate data_creazione, LocalDate data_allenamento, User user) {
+    public WorkoutPlan(String nome_scheda, LocalDate data_creazione, LocalDate data_allenamento) {
         this.nome_scheda = nome_scheda;
         this.data_creazione = data_creazione;
         this.data_allenamento = data_allenamento;
-        this.user = user;
     }
 }
