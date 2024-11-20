@@ -39,7 +39,6 @@ public class HealthData {
     }
 
 
-
     // Calcolo BMI
     public double calculateBMI() {
         return peso / (altezza * altezza);

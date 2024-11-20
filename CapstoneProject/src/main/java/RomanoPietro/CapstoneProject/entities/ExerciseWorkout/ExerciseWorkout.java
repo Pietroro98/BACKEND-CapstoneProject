@@ -1,6 +1,5 @@
 package RomanoPietro.CapstoneProject.entities.ExerciseWorkout;
 
-
 import RomanoPietro.CapstoneProject.entities.Exercise.Exercise;
 import RomanoPietro.CapstoneProject.entities.WorkoutPlan.WorkoutPlan;
 import jakarta.persistence.*;

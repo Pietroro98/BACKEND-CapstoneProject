@@ -18,7 +18,7 @@ public class Exercise {
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "bodyPart_id", nullable = false)
+    @JoinColumn(name = "bodyPart_id")
     private BodyParts bodyParts;
 
     private String name;
