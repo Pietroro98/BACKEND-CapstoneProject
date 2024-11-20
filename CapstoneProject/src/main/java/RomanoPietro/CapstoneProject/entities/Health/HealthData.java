@@ -22,7 +22,7 @@ public class HealthData {
     private double peso;
     private double altezza;
     private int eta;
-    private String genere; // "M" per maschio e "F" per femmina
+    private String genere;
     private LocalDate data_salvataggio;
 
 
@@ -55,6 +55,8 @@ public class HealthData {
         } else if ("F".equals(genere)) {
             fatPercentage = 1.20 * bmi + 0.23 * eta - 5.4;
         }
+
+        //ho usato m per maschio ed f per femmina
 
         return fatPercentage;
     }
