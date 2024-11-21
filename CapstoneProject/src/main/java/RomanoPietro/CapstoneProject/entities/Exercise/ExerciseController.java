@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -34,13 +35,14 @@ public class ExerciseController {
     }
 
     //GET AND SEARCH
-    @GetMapping("/exercises/search")
-    public Page<Exercise> searchExercises(
-            @RequestParam String keyword,
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
-        Pageable pageable = PageRequest.of(page, size);
-        return exerciseService.searchExercises(keyword, pageable);
+    @GetMapping("/search")
+    public Page<Exercise> searchExercises(@RequestParam("keyword") String keyword,
+                                          @RequestParam("bodyPartId") Long bodyPartId,
+                                          @RequestParam("page") int page,
+                                          @RequestParam("size") int size,
+                                          @RequestParam("sortBy") String sortBy) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
+        return exerciseService.searchExercises(keyword, bodyPartId, pageable);
     }
 
     // GET by ID

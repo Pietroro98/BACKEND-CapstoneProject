@@ -42,8 +42,8 @@ public class ExerciseService {
         }
     }
 
-    public Page<Exercise> searchExercises(String keyword, Pageable pageable) {
-        return exerciseRepository.findByNameContaining(keyword, pageable);
+    public Page<Exercise> searchExercises(String keyword, long bodyPartId, Pageable pageable) {
+        return exerciseRepository.findByNameContainingAndBodyPartsId(keyword, bodyPartId, pageable);
     }
 
     // GET by ID -----------------------------------------------------------------
