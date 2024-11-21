@@ -57,12 +57,12 @@ public class ExerciseWorkoutService {
 
             // Creo un nuovo ExerciseWorkout
             ExerciseWorkout newExerciseWorkout = new ExerciseWorkout(
-                    workoutPlan,
-                    exercise,
                     body.ripetizioni(),
                     body.serie(),
                     body.pesoUsato()
             );
+            newExerciseWorkout.setWorkoutPlan(workoutPlan);
+            newExerciseWorkout.setExercise(exercise);
             return this.exerciseWorkoutRepository.save(newExerciseWorkout);
 
         } catch (Exception e) {
@@ -71,7 +71,7 @@ public class ExerciseWorkoutService {
     }
 
     // DELETE -----------------------------------------------------------------------
-    public void findAndDeleteById(long id) {
+    public void deleteById(long id) {
         try {
             ExerciseWorkout found = exerciseWorkoutRepository.findById(id)
                     .orElseThrow(() -> new NotFoundException("ExerciseWorkout con ID " + id + " non trovato"));
