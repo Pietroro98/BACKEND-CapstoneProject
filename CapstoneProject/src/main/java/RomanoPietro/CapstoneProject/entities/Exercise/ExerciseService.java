@@ -64,11 +64,11 @@ public class ExerciseService {
         try {
             BodyParts bodyParts = bodyPartsService.findById(body.bodyPartId());
             Exercise newExercise = new Exercise(
+                    body.name(),
                     body.equipment(),
                     body.target(),
                     body.secondaryMuscles(),
-                    body.instructions(),
-                    body.avatarUrl()
+                    body.instructions()
             );
             newExercise.setBodyParts(bodyParts);
             return exerciseRepository.save(newExercise);
