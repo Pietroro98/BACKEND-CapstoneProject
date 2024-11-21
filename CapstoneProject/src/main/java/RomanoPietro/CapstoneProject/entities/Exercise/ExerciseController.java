@@ -74,6 +74,7 @@ public class ExerciseController {
 
 
     @PatchMapping("/avatar")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public String uploadAvatar(@RequestParam("exerciseId") long exerciseId,
                                @RequestParam("avatar") MultipartFile file) {
         if (file.isEmpty()) {

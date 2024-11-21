@@ -1,5 +1,7 @@
 package RomanoPietro.CapstoneProject.entities.Exercise;
 
+import RomanoPietro.CapstoneProject.entities.BodyParts.BodyParts;
+import RomanoPietro.CapstoneProject.entities.BodyParts.BodyPartsService;
 import RomanoPietro.CapstoneProject.exceptions.BadRequestException;
 import RomanoPietro.CapstoneProject.exceptions.NotFoundException;
 import com.cloudinary.Cloudinary;
@@ -22,6 +24,9 @@ public class ExerciseService {
 
     @Autowired
     private ExerciseRepository exerciseRepository;
+
+    @Autowired
+    BodyPartsService bodyPartsService;
 
     // GET--------------------------------------------------------
     public Page<Exercise> findAll(int page, int size, String sortBy) {
@@ -57,6 +62,7 @@ public class ExerciseService {
     // POST -----------------------------------------------------------------------
     public Exercise save(NewExerciseDTO body) {
         try {
+            BodyParts bodyParts = bodyPartsService.findById(body.bodyPartId());
             Exercise newExercise = new Exercise(
                     body.equipment(),
                     body.target(),
@@ -64,6 +70,7 @@ public class ExerciseService {
                     body.instructions(),
                     body.avatarUrl()
             );
+            newExercise.setBodyParts(bodyParts);
             return exerciseRepository.save(newExercise);
         } catch (Exception e) {
             throw new BadRequestException("Errore durante il salvataggio dell'esercizio: " + e.getMessage());
