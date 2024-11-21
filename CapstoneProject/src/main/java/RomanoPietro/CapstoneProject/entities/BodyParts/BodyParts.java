@@ -17,10 +17,9 @@ public class BodyParts {
     private long id;
 
     private String nome;
-    private String descrizione;
 
-    public BodyParts(String nome, String descrizione) {
+
+    public BodyParts(String nome) {
         this.nome = nome;
-        this.descrizione = descrizione;
     }
 }

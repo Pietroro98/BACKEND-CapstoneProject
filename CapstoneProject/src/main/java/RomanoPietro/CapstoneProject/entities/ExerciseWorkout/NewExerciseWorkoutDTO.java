@@ -1,22 +1,21 @@
 package RomanoPietro.CapstoneProject.entities.ExerciseWorkout;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
 
 public record NewExerciseWorkoutDTO(
-        @NotNull(message = "L'ID dell'esercizio è obbligatorio")
-        long exerciseId,
-
-        @NotNull(message = "L'ID del workout plan è obbligatorio")
+        @NotNull(message = "WorkoutPlan ID è obbligatorio")
         long workoutPlanId,
 
-        @Min(1)
+        @NotNull(message = "Exercise ID è obbligatorio")
+        long exerciseId,
+
+        @NotNull(message = "Il numero di ripetizioni è obbligatorio")
         int ripetizioni,
 
-        @Min(1)
+        @NotNull(message = "Il numero di serie è obbligatorio")
         int serie,
 
-        @Min(0)
+        @NotNull(message = "Il peso usato è obbligatorio")
         double pesoUsato
 ) {
 }

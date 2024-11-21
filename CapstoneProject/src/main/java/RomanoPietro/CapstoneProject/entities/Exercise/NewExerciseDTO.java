@@ -22,7 +22,7 @@ public record NewExerciseDTO(
 
         String instructions,
 
-        String gifURL,
+        String avatarUrl,
 
         @NotNull(message = "L'ID del bodyPart è obbligatorio")
         long bodyPartId

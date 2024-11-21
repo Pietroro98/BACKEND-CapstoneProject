@@ -26,7 +26,7 @@ public class Exercise {
     private String target;
     private String secondaryMuscles;
     private String instructions;
-    private String gifURL;
+    private String avatar;
 
     public Exercise(String name, String equipment, String target, String secondaryMuscles, String instructions) {
         this.name = name;
@@ -34,6 +34,6 @@ public class Exercise {
         this.target = target;
         this.secondaryMuscles = secondaryMuscles;
         this.instructions = instructions;
-        this.gifURL = "giftURL";
+        this.avatar = "avatarURL";
     }
 }
