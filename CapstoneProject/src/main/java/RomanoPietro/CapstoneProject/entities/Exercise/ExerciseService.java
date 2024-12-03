@@ -101,4 +101,14 @@ public class ExerciseService {
         }
         return url;
     }
+
+    //Find By BodyPart
+    public Page<Exercise> searchByBodyPartName(String BodyPartName, int Page,int Size, String SortBy) {
+        try {
+            Pageable pageable = PageRequest.of(Page, Size, Sort.by(SortBy));
+            return exerciseRepository.findByBodyParts_NomeContainingIgnoreCase(BodyPartName, pageable);
+        } catch (Exception e) {
+            throw new BadRequestException("Errore durante il recupero degli esercizi per nome della parte del corpo interessata: " + e.getMessage());
+        }
+    }
 }

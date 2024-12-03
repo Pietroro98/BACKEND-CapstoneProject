@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ExerciseRepository extends JpaRepository<Exercise, Long> {
     Page<Exercise> findByNameContainingAndBodyPartsId(String name, long bodyPartId, Pageable pageable);
+    Page<Exercise> findByBodyParts_NomeContainingIgnoreCase(String bodyPartName, Pageable pageable);
 }

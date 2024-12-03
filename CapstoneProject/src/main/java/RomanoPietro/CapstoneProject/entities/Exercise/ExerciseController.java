@@ -8,7 +8,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -90,5 +89,15 @@ public class ExerciseController {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,
                     "Errore durante l'upload dell'avatar: " + e.getMessage(), e);
         }
+    }
+
+    //Find By BodyPart
+    @GetMapping("/body-Part")
+    public Page<Exercise> findByBodyPartName(
+            @RequestParam("bodyPartName") String bodyPartName,
+            @RequestParam(defaultValue = "0") int Page,
+            @RequestParam(defaultValue = "10") int Size,
+            @RequestParam(defaultValue = "name") String SortBy) {
+        return exerciseService.searchByBodyPartName(bodyPartName, Page, Size, SortBy);
     }
 }
