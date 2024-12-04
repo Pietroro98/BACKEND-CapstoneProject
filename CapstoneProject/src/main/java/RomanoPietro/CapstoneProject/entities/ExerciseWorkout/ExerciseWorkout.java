@@ -2,6 +2,7 @@ package RomanoPietro.CapstoneProject.entities.ExerciseWorkout;
 
 import RomanoPietro.CapstoneProject.entities.Exercise.Exercise;
 import RomanoPietro.CapstoneProject.entities.WorkoutPlan.WorkoutPlan;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
@@ -20,12 +21,13 @@ public class ExerciseWorkout {
 
     @ManyToOne
     @JoinColumn(name = "workoutPlan_id")
-    @JsonIgnore
+//    @JsonIgnore
+    @JsonBackReference
     private WorkoutPlan workoutPlan;
 
     @ManyToOne
     @JoinColumn(name = "exercise_id")
-    @JsonIgnore
+   @JsonIgnore
     private Exercise exercise;
 
     private int ripetizioni;

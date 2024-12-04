@@ -2,6 +2,8 @@ package RomanoPietro.CapstoneProject.entities.WorkoutPlan;
 
 import RomanoPietro.CapstoneProject.Users.User;
 import RomanoPietro.CapstoneProject.entities.ExerciseWorkout.ExerciseWorkout;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,6 +16,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @ToString
+@JsonIgnoreProperties({"exerciseWorkouts"})
 public class WorkoutPlan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
