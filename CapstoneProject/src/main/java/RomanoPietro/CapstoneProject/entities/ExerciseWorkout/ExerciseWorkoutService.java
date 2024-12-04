@@ -70,6 +70,12 @@ public class ExerciseWorkoutService {
         }
     }
 
+    //GET singoloexeWor
+    public ExerciseWorkout findById(long id) {
+        return exerciseWorkoutRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("ExerciseWorkout con ID " + id + " non trovato"));
+    }
+
     // DELETE -----------------------------------------------------------------------
     public void deleteById(long id) {
         try {

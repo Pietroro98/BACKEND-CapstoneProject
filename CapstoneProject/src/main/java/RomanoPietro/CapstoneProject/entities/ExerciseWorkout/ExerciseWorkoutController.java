@@ -55,6 +55,12 @@ public class ExerciseWorkoutController {
             throw new BadRequestException("Errore durante il salvataggio della scheda dell'esercizio: " + e.getMessage());
         }
     }
+   // GET singolo
+    @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    public ExerciseWorkout getExerciseWorkoutById(@PathVariable long id) {
+        return exerciseWorkoutService.findById(id);
+    }
 
     // DELETE
     @DeleteMapping("/{id}")
