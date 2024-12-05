@@ -5,6 +5,7 @@ import RomanoPietro.CapstoneProject.exceptions.BadRequestException;
 import RomanoPietro.CapstoneProject.exceptions.NotFoundException;
 import RomanoPietro.CapstoneProject.payloads.NewUserDTO;
 import RomanoPietro.CapstoneProject.repositories.UserRepository;
+import RomanoPietro.CapstoneProject.tools.MailgunSender;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class UserService {
 
     @Autowired
     private Cloudinary cloudinaryUploader;
+
+    @Autowired
+    MailgunSender mailgunSender;
 
     public User findById(long id) {
         return this.userRepository.findById(id).orElseThrow(() -> new NotFoundException(id));
@@ -61,7 +65,11 @@ public class UserService {
                 body.email(),
                 bcrypt.encode(body.password()),
                 avatarUrl);
-        return this.userRepository.save(newUtente);
+
+        User savedUser = userRepository.save(newUtente);
+        //mailgun
+        mailgunSender.sendRegistrationEmail(savedUser);
+        return savedUser;
     }
 
     public User save(User utente) {
