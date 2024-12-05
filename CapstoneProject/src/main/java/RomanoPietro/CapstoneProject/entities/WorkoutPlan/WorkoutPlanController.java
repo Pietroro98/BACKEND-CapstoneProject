@@ -37,7 +37,7 @@ public class WorkoutPlanController {
     //POST----------------------------------------
 
     @PostMapping
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @ResponseStatus(HttpStatus.CREATED)
     public WorkoutPlan save(@RequestBody @Validated NewWorkoutPlanDTO body, BindingResult validationResult) {
         if (validationResult.hasErrors()) {
