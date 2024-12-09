@@ -3,19 +3,19 @@ import jakarta.validation.constraints.NotNull;
 
 
 public record NewExerciseWorkoutDTO(
-        @NotNull(message = "WorkoutPlan ID è obbligatorio")
+
         long workoutPlanId,
 
-        @NotNull(message = "Exercise ID è obbligatorio")
+
         long exerciseId,
 
         @NotNull(message = "Il numero di ripetizioni è obbligatorio")
-        int ripetizioni,
+        Integer ripetizioni,
 
         @NotNull(message = "Il numero di serie è obbligatorio")
-        int serie,
+        Integer serie,
 
         @NotNull(message = "Il peso usato è obbligatorio")
-        double pesoUsato
+        Double pesoUsato
 ) {
 }

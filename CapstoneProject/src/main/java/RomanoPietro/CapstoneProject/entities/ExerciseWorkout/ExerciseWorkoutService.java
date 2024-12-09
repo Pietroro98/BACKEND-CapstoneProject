@@ -70,6 +70,31 @@ public class ExerciseWorkoutService {
         }
     }
 
+
+    //PUT --------------------------------------------
+    public ExerciseWorkout findByIdAndUpdate(long id, NewExerciseWorkoutDTO body) {
+        try {
+            // Trova l'ExerciseWorkout esistente tramite l'ID
+            ExerciseWorkout found = this.findById(id);
+
+            if (body.ripetizioni() != null) {
+                found.setRipetizioni(body.ripetizioni());
+            }
+            if (body.serie() != null) {
+                found.setSerie(body.serie());
+            }
+            if (body.pesoUsato() != null) {
+                found.setPesoUsato(body.pesoUsato());
+            }
+
+            return this.exerciseWorkoutRepository.save(found);
+        } catch (NotFoundException e) {
+            throw e;  // Se l'ExerciseWorkout non viene trovato, lancia NotFoundException
+        } catch (Exception e) {
+            throw new BadRequestException("Errore durante l'aggiornamento! " + e.getMessage());
+        }
+    }
+
     //GET singoloexeWor
     public ExerciseWorkout findById(long id) {
         return exerciseWorkoutRepository.findById(id)

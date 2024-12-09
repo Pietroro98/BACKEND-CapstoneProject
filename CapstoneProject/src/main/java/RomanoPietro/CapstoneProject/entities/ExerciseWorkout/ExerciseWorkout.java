@@ -21,13 +21,10 @@ public class ExerciseWorkout {
 
     @ManyToOne
     @JoinColumn(name = "workoutPlan_id")
-////    @JsonIgnore
-//    @JsonBackReference
     private WorkoutPlan workoutPlan;
 
     @ManyToOne
     @JoinColumn(name = "exercise_id")
-//   @JsonIgnore
     private Exercise exercise;
 
     private int ripetizioni;

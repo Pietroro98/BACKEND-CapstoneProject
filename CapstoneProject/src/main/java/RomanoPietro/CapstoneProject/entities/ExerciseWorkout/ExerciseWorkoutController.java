@@ -39,6 +39,21 @@ public class ExerciseWorkoutController {
         return exerciseWorkoutService.findByExerciseId(exerciseId, pageable);
     }
 
+    //PUT----------------------------------------------------------------
+    @PutMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public ExerciseWorkout findByIdAndUpdate(@PathVariable long id, @RequestBody @Validated NewExerciseWorkoutDTO body, BindingResult validationResult) {
+        if (validationResult.hasErrors()) {
+            validationResult.getAllErrors().forEach(System.out::println);
+            throw new BadRequestException("Ci sono stati errori nel payload!");
+        }
+        try {
+            return this.exerciseWorkoutService.findByIdAndUpdate(id, body);
+        } catch (Exception e) {
+            throw new BadRequestException("Errore durante l'aggiornamento del cliente: " + e.getMessage());
+        }
+    }
+
 
 
     @PostMapping
@@ -55,6 +70,7 @@ public class ExerciseWorkoutController {
             throw new BadRequestException("Errore durante il salvataggio della scheda dell'esercizio: " + e.getMessage());
         }
     }
+
    // GET singolo
     @GetMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
