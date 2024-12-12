@@ -39,9 +39,9 @@ public class ExerciseWorkoutController {
         return exerciseWorkoutService.findByExerciseId(exerciseId, pageable);
     }
 
-    //PUT----------------------------------------------------------------
+    //PUT---ADMIN-------------------------------------------------------------
     @PutMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     public ExerciseWorkout findByIdAndUpdate(@PathVariable long id, @RequestBody @Validated NewExerciseWorkoutDTO body, BindingResult validationResult) {
         if (validationResult.hasErrors()) {
             validationResult.getAllErrors().forEach(System.out::println);
@@ -53,6 +53,7 @@ public class ExerciseWorkoutController {
             throw new BadRequestException("Errore durante l'aggiornamento del cliente: " + e.getMessage());
         }
     }
+
 
 
 
