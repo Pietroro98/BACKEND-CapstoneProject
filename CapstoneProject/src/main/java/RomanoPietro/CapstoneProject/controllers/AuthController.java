@@ -32,6 +32,7 @@ public class AuthController {
         return new UserLoginResponseDTO(this.authService.checkCredentialsAndGenerateToken(body));
     }
 
+
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
     public User save(@RequestBody @Validated NewUserDTO body, BindingResult validationResult) {
