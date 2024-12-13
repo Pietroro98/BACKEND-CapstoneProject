@@ -1,6 +1,7 @@
 # My Ghisa Gym Backend 💪🏋️‍♂️
 
 Il backend di **My Ghisa Gym** è un'applicazione basata su **Spring Boot** che gestisce i dati degli utenti, i piani di allenamento, gli esercizi e la sicurezza tramite autenticazione JWT. Utilizza un database **PostgreSQL** per la memorizzazione dei dati e **Cloudinary** per la gestione delle immagini caricate dagli utenti.
+😊![Preview Database](CapstoneProject/.mvn/img/DiagrammaSQL.png)
 
 ## Funzionalità ⚡
 
