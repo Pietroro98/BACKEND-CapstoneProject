@@ -86,6 +86,12 @@ Prima di iniziare, assicurati di avere i seguenti strumenti installati:
 
 ## Endpoint API 📡:
 
+### **Crud Model**
+- **GET** 
+- **POST** 
+- **PUT** 
+- **DELETE** 
+- **PATCH**
 ### - Autenticazione 🔑
 ### - Gestione degli Utenti 👤
 ### - Gestione dei Piani di Allenamento 🏋️‍♀️
